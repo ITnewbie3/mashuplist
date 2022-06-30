@@ -1,24 +1,32 @@
-import logo from './logo.svg';
+import { createGlobalStyle } from 'styled-components';
 import './App.css';
+import TodoCreate from './components/TodoCreate';
+import TodoHead from './components/TodoHead';
+import TodoList from './components/TodoList';
+import TodoTemplate from './components/TodoTemplate';
+import { TodoProvider } from './TodoContext';
+
+// 글로벌 스타일을 추가하고 싶을때
+const GlobakStyle = createGlobalStyle`
+  body{
+    background:#e9ecef;
+
+  }
+`
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <TodoProvider>
+      <GlobakStyle></GlobakStyle>
+      <TodoTemplate>
+        <TodoHead/>
+        <TodoList/>
+        <TodoCreate/>
+      </TodoTemplate>
+      </TodoProvider>
+    </>
+    
   );
 }
 
